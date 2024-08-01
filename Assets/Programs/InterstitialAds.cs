@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class InitializeAds : MonoBehaviour, IUnityAdsInitializationListener  
+public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
+
     [SerializeField] private string androidGameId;
     [SerializeField] private string iosGameId;
-    [SerializeField] private bool isTesting;
-
+    // Start is called before the first frame update
     private string gameId;
 
     private void Awake(){
@@ -19,20 +19,8 @@ public class InitializeAds : MonoBehaviour, IUnityAdsInitializationListener
         #elif UNITY_EDITOR
         gameId = androidGameId; // for testing
         #endif
-
-        if(!Advertisement.isInitialized && Advertisement.isSupported){
-            Advertisement.Initialize(gameId, isTesting, this);
-        }
     }
-
-    public void OnInitializationComplete(){
-        throw new System.NotImplementedException();
-    }
-    public void OnInitializationFailed(UnityAdsInitializationError error, string message){
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
+ 
     void Start()
     {
         
