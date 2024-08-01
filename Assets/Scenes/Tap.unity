@@ -1097,11 +1097,13 @@ MonoBehaviour:
   goalText: {fileID: 1409835052}
   timerText: {fileID: 2001421902}
   scoreText: {fileID: 1436918563}
+  countDownText: {fileID: 1265915177}
   startBoard: {fileID: 1224861602}
   looseBoard: {fileID: 1502599364}
   yourScore: {fileID: 1103326894}
   winBoard: {fileID: 1327542343}
   bestRecord: {fileID: 468890490}
+  countDown: 0
   highestScore: 0
   highestText: {fileID: 468890490}
 --- !u!1 &678280387
@@ -2145,7 +2147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1224861603
 RectTransform:
   m_ObjectHideFlags: 0

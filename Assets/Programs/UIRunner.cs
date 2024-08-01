@@ -15,7 +15,7 @@ public class UIRunner : MonoBehaviour
     private bool gameOn;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
-    public TestMeshProUGUI countDownText;
+    public TextMeshProUGUI countDownText;
 
     public GameObject startBoard;
     public GameObject looseBoard;
@@ -58,7 +58,7 @@ public class UIRunner : MonoBehaviour
 
     private void Timer()
     {
-        if(countDown <= 0){
+        if(timer <= 0){
             if(timeUp == false){
                 timer -= Time.deltaTime;
                 timerText.text = "0" + timer.ToString("F2");
@@ -68,7 +68,7 @@ public class UIRunner : MonoBehaviour
                     StartCoroutine(Boards());
                 }
             }
-            countDown = 0;
+            timer = 0;
         }
     }
 
@@ -76,8 +76,7 @@ public class UIRunner : MonoBehaviour
     {
         gameOn = true;
         startBoard.SetActive(false);
-        timer = 5.0f;
-        countDown = 3.0f;
+        GenerateGoal();
     }
     public void PlayAgain(){
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -117,7 +116,5 @@ public class UIRunner : MonoBehaviour
         {
             highestScore = PlayerPrefs.GetInt("Highest");
         }
-
-       //highestScoreText.text = highestScore.ToString();
     }
 }
