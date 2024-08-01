@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class UIRunner : MonoBehaviour
 {
-    private float timer;
-    private int score;
-    [SerializeField] private int goal;
+    [SerializeField] private float timer;
+    [SerializeField] private int score;
+    private int goal;
     public TextMeshProUGUI goalText;
 
     private bool gameOn;
@@ -22,21 +22,22 @@ public class UIRunner : MonoBehaviour
     public TextMeshProUGUI yourScore;
     public GameObject winBoard;
     public TextMeshProUGUI bestRecord;
-    
-    public float countDown;
 
     [SerializeField] private int highestScore;
     public TextMeshProUGUI highestText;
+    private bool begin;
 
     private bool timeUp;
     // Start is called before the first frame update
+    private float currCountdownValue;
     void Start()
     {
         scoreText.text =  score.ToString();
-        gameOn = true; //change this to false inorder to use game start board
+        gameOn = false; //change this to false inorder to use game start board
         goalText.text = goal.ToString();
         highestText.text = highestScore.ToString();
-        countDown = 3.0f;
+        timer = 5.0f;
+        begin = false;
     }
 
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class UIRunner : MonoBehaviour
 
     public void TapTap()
     {
-        if(!timeUp)
+        if(!timeUp && begin == true)
         {
             score++;
             scoreText.text = score.ToString();
@@ -58,17 +59,19 @@ public class UIRunner : MonoBehaviour
 
     private void Timer()
     {
-        if(timer <= 0){
-            if(timeUp == false){
-                timer -= Time.deltaTime;
-                timerText.text = "0" + timer.ToString("F2");
-                if(timer <= 0){
-                    timeUp = true;
-                    timerText.text = "00:00";
-                    StartCoroutine(Boards());
+        if(begin == true){
+            if(timer > 0){
+                if(timeUp == false){
+                    timer -= Time.deltaTime;
+                    timerText.text = "0" + timer.ToString("F2");
+                    if(timer <= 0){
+                        timeUp = true;
+                        timerText.text = "00:00";
+                        StartCoroutine(Boards());
+                        begin = false;
+                    }
                 }
             }
-            timer = 0;
         }
     }
 
@@ -103,7 +106,7 @@ public class UIRunner : MonoBehaviour
         timer = 5.0f;
         score = 0;
         timeUp = false;
-        countDown = 3.0f;
+        StartCoroutine(StartCountdown());
     }
 
     private void Scores()
@@ -115,6 +118,20 @@ public class UIRunner : MonoBehaviour
         else
         {
             highestScore = PlayerPrefs.GetInt("Highest");
+        }
+    }
+
+    IEnumerator StartCountdown(float countdownValue = 4)
+    {
+        currCountdownValue = countdownValue;
+        while (currCountdownValue > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue--; 
+            if(currCountdownValue <= 0){
+                begin = true;
+            }
+            countDownText.text = currCountdownValue.ToString();
         }
     }
 }
