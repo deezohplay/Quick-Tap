@@ -10,6 +10,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     [SerializeField] private string iosGameId;
     // Start is called before the first frame update
     private string gameId;
+    private string adUnitId;
 
     private void Awake(){
         #if UNITY_IOS
@@ -49,5 +50,15 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     void Update()
     {
         
+    }
+
+    public void OnUnityAdsAdLoaded(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    {
+        throw new System.NotImplementedException();
     }
 }

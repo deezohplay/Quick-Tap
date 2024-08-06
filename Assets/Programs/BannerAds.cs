@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class BannerAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
     [SerializeField] private string iosGameId;
     // Start is called before the first frame update
     private string gameId;
+    private string adUnitId;
 
     private void Awake(){
         #if UNITY_IOS
@@ -29,6 +31,16 @@ public class BannerAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
         Advertisement.Banner.Load(adUnitId,options);
     }
 
+    private void BannerLoadError(string message)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void BannerLoaded()
+    {
+        throw new NotImplementedException();
+    }
+
     public void ShowBannerAd(){
         BannerOptions options = new BannerOptions{
             showCallback = BannerShown,
@@ -38,18 +50,53 @@ public class BannerAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
         Advertisement.Banner.Show(adUnitId, options);
     }
 
+    private void BannerHidden()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void BannerClicked()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void BannerShown()
+    {
+        throw new NotImplementedException();
+    }
+
     public void HideBannerAd(){
         Advertisement.Banner.Hide();
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnUnityAdsShowStart(string placementId)
     {
-        
+        throw new System.NotImplementedException();
     }
+
+    public void OnUnityAdsShowClick(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsAdLoaded(string placementId)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    {
+        throw new System.NotImplementedException();
+    }
+    // Start is called before the first frame update
 }
