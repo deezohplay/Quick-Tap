@@ -10,6 +10,7 @@ public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     [SerializeField] private string iosGameId;
     // Start is called before the first frame update
     private string gameId;
+    private string adUnitId;
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
@@ -49,6 +50,10 @@ public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
         #elif UNITY_EDITOR
         gameId = androidGameId; // for testing
         #endif
+    }
+    public void LoadInterstitialAd()
+    {
+        Advertisement.Load(adUnitId, this);
     }
  
     void Start()
