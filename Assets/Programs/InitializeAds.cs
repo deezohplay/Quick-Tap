@@ -26,21 +26,9 @@ public class InitializeAds : MonoBehaviour, IUnityAdsInitializationListener
     }
 
     public void OnInitializationComplete(){
-        throw new System.NotImplementedException();
-    }
-    public void OnInitializationFailed(UnityAdsInitializationError error, string message){
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+    public void OnInitializationFailed(UnityAdsInitializationError error, string message){
         
     }
 }

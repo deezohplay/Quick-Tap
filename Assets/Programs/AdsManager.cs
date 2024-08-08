@@ -26,17 +26,5 @@ public class AdsManager : MonoBehaviour
         bannerAds.LoadBannerAd();
         interstitialAds.LoadInterstitialAd();
         rewardedAds.LoadRewardedAd();
-
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

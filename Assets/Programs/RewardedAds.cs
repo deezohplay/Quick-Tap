@@ -37,28 +37,18 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState){
         if(placementId == adUnitId && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED)){
             Debug.Log("Ads Fully Watched");
+            UIRunner.Instance.isRewarded = true;
+            UIRunner.Instance.ContinueClick();
         }
     }
     #endregion
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

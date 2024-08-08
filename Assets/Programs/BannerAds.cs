@@ -33,12 +33,12 @@ public class BannerAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
 
     private void BannerLoadError(string message)
     {
-        throw new NotImplementedException();
+        
     }
 
     private void BannerLoaded()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void ShowBannerAd(){
@@ -52,17 +52,17 @@ public class BannerAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
 
     private void BannerHidden()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void BannerClicked()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void BannerShown()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void HideBannerAd(){
@@ -71,32 +71,31 @@ public class BannerAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsShowStart(string placementId)
     {
-        throw new System.NotImplementedException();
+        ;
     }
 
     public void OnUnityAdsShowClick(string placementId)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        throw new System.NotImplementedException();
+        
     }
-    // Start is called before the first frame update
 }

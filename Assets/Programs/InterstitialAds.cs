@@ -12,36 +12,6 @@ public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     private string gameId;
     private string adUnitId;
 
-    public void OnUnityAdsAdLoaded(string placementId)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnUnityAdsShowClick(string placementId)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnUnityAdsShowStart(string placementId)
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void Awake(){
         #if UNITY_IOS
         gameId = iosGameId;
@@ -55,15 +25,38 @@ public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     {
         Advertisement.Load(adUnitId, this);
     }
- 
-    void Start()
+    public void ShowInterstitialAd()
     {
-        
+        Advertisement.Show(adUnitId, this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnUnityAdsAdLoaded(string placementId)
     {
-        
+
+    }
+
+    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    {
+
+    }
+
+    public void OnUnityAdsShowClick(string placementId)
+    {
+
+    }
+
+    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+    {
+
+    }
+
+    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+    {
+
+    }
+
+    public void OnUnityAdsShowStart(string placementId)
+    {
+
     }
 }

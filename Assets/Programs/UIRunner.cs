@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
 public class UIRunner : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UIRunner : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI countDownText;
 
+    public GameObject countText;
     public GameObject startBoard;
     public GameObject looseBoard;
     public TextMeshProUGUI yourScore;
@@ -30,6 +32,29 @@ public class UIRunner : MonoBehaviour
     private bool timeUp;
     // Start is called before the first frame update
     private float currCountdownValue;
+    public int gamePlayed = 1;
+    public static UIRunner Instance { get; private set; }
+
+    public bool isRewarded = false;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        StartCoroutine(DisplayBanner());
+    }
+
+    private IEnumerator DisplayBanner()
+    {
+        yield return new WaitForSeconds(1f);
+        AdsManager.Instance.bannerAds.ShowBannerAd();
+    }
+
     void Start()
     {
         scoreText.text =  score.ToString();
@@ -69,6 +94,11 @@ public class UIRunner : MonoBehaviour
                         timerText.text = "00:00";
                         StartCoroutine(Boards());
                         begin = false;
+                        AdsManager.Instance.bannerAds.HideBannerAd();
+                        if (gamePlayed % 3 == 0)
+                        {
+                            AdsManager.Instance.interstitialAds.ShowInterstitialAd();
+                        }
                     }
                 }
             }
@@ -104,8 +134,11 @@ public class UIRunner : MonoBehaviour
         looseBoard.SetActive(false);
         goalText.text = goal.ToString();
         timer = 5.0f;
+        countText.SetActive(true);
         score = 0;
         timeUp = false;
+        gamePlayed++;
+        AdsManager.Instance.bannerAds.ShowBannerAd();
         StartCoroutine(StartCountdown());
     }
 
@@ -130,8 +163,28 @@ public class UIRunner : MonoBehaviour
             currCountdownValue--; 
             if(currCountdownValue <= 0){
                 begin = true;
+                countText.SetActive(false);
             }
             countDownText.text = currCountdownValue.ToString();
+        }
+    }
+
+    public void MoreSeconds()
+    {
+        AdsManager.Instance.rewardedAds.ShowRewardedAd();
+    }
+
+    public void ContinueClick()
+    {
+        if (isRewarded == true)
+        {
+            looseBoard.SetActive(false);
+            timer = 1.0f;
+            timeUp = false;
+            AdsManager.Instance.bannerAds.ShowBannerAd();
+            StartCoroutine(StartCountdown());
+            isRewarded = false;
+
         }
     }
 }
