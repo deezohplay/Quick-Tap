@@ -120,7 +120,6 @@ public class UIRunner : MonoBehaviour
         if(score >= goal){
             winBoard.SetActive(true);
             bestRecord.text = score.ToString();
-
         }else{
             looseBoard.SetActive(true);
             yourScore.text = score.ToString();
@@ -154,7 +153,7 @@ public class UIRunner : MonoBehaviour
         }
     }
 
-    IEnumerator StartCountdown(float countdownValue = 4)
+    IEnumerator StartCountdown(float countdownValue = 3)
     {
         currCountdownValue = countdownValue;
         countDownText.text = currCountdownValue.ToString();
@@ -185,7 +184,6 @@ public class UIRunner : MonoBehaviour
             AdsManager.Instance.bannerAds.ShowBannerAd();
             StartCoroutine(StartCountdown());
             isRewarded = false;
-
         }
     }
 }
