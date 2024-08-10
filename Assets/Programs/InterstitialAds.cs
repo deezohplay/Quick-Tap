@@ -27,6 +27,7 @@ public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSh
     }
     public void ShowInterstitialAd()
     {
+        adUnitId = "Interstitial_Android";
         Advertisement.Show(adUnitId, this);
     }
 

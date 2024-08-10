@@ -32,7 +32,7 @@ public class UIRunner : MonoBehaviour
     private bool timeUp;
     // Start is called before the first frame update
     private float currCountdownValue;
-    public int gamePlayed = 1;
+    public int gamePlayed = 0;
     public static UIRunner Instance { get; private set; }
 
     public bool isRewarded = false;
@@ -157,6 +157,7 @@ public class UIRunner : MonoBehaviour
     IEnumerator StartCountdown(float countdownValue = 4)
     {
         currCountdownValue = countdownValue;
+        countDownText.text = currCountdownValue.ToString();
         while (currCountdownValue > 0)
         {
             yield return new WaitForSeconds(1.0f);

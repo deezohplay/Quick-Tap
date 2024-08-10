@@ -27,6 +27,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     }
 
     public void ShowRewardedAd(){
+        adUnitId = "Rewarded_Android";
         Advertisement.Show(adUnitId, this);
         LoadRewardedAd();
     }

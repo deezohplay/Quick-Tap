@@ -9,4 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Tap.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 4d6c22cb8de873c43b207c0401990d0a, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7e77d5d322ae0e147b2ec2bd745d9d75, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: b78a21f9b41eb854a87c041aad276bd8, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 3155480c07ebeb94bbcb2e91ef02375f, type: 2}
