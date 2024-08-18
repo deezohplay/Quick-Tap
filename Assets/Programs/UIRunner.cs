@@ -75,7 +75,7 @@ public class UIRunner : MonoBehaviour
 
     public void TapTap()
     {
-        if(!timeUp && begin == true)
+        if(!timeUp) //&& begin == true
         {
             score++;
             scoreText.text = score.ToString();
@@ -84,7 +84,7 @@ public class UIRunner : MonoBehaviour
 
     private void Timer()
     {
-        if(begin == true){
+       // if(begin == true){
             if(timer > 0){
                 if(timeUp == false){
                     timer -= Time.deltaTime;
@@ -102,7 +102,7 @@ public class UIRunner : MonoBehaviour
                     }
                 }
             }
-        }
+        //}
     }
 
     public void GameOn()
@@ -111,9 +111,11 @@ public class UIRunner : MonoBehaviour
         startBoard.SetActive(false);
         GenerateGoal();
     }
+    /*
     public void PlayAgain(){
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    */
     IEnumerator Boards(){
         Scores();
         yield return new WaitForSeconds(1.0f); //creates delays for 1 second
@@ -138,7 +140,7 @@ public class UIRunner : MonoBehaviour
         timeUp = false;
         gamePlayed++;
         AdsManager.Instance.bannerAds.ShowBannerAd();
-        StartCoroutine(StartCountdown());
+        //StartCoroutine(StartCountdown());
     }
 
     private void Scores()
@@ -152,7 +154,7 @@ public class UIRunner : MonoBehaviour
             highestScore = PlayerPrefs.GetInt("Highest");
         }
     }
-
+    /*
     IEnumerator StartCountdown(float countdownValue = 3)
     {
         currCountdownValue = countdownValue;
@@ -168,7 +170,7 @@ public class UIRunner : MonoBehaviour
             countDownText.text = currCountdownValue.ToString();
         }
     }
-
+    */
     public void MoreSeconds()
     {
         AdsManager.Instance.rewardedAds.ShowRewardedAd();
@@ -182,7 +184,7 @@ public class UIRunner : MonoBehaviour
             timer = 1.0f;
             timeUp = false;
             AdsManager.Instance.bannerAds.ShowBannerAd();
-            StartCoroutine(StartCountdown());
+            //StartCoroutine(StartCountdown());
             isRewarded = false;
         }
     }
