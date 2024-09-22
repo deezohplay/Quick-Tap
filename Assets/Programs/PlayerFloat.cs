@@ -43,6 +43,18 @@ public class PlayerFloat : MonoBehaviour
         if (isInWater)
         {
             ApplyBuoyancy();
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Add force to push player upward faster
+            }
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began) 
+                {
+                    //Add force to push player upward faster
+                }
+            }
         }
     }
 
@@ -51,7 +63,6 @@ public class PlayerFloat : MonoBehaviour
         // Buoyancy force is an upward force
         float upwardForce = floatStrength - rb.velocity.y;
         rb.AddForce(new Vector2(0f, upwardForce), ForceMode2D.Force);
-
         // Simulate drag or resistance while moving in water
         rb.drag = waterDrag;
     }
