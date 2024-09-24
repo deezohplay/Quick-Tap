@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerFloat : MonoBehaviour
 {
-    public float floatStrength = 5f; // How strong the floating effect is
+    public float floatStrength; // How strong the floating effect is
     public float waterDrag = 1f;     // Resistance when moving through water
     public LayerMask waterLayer;     // Define which layer represents water
 
@@ -46,13 +46,15 @@ public class PlayerFloat : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //Add force to push player upward faster
+                floatStrength += 0.1f;
             }
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began) 
+                if (touch.phase == TouchPhase.Began)
                 {
                     //Add force to push player upward faster
+                    floatStrength += 0.1f;
                 }
             }
         }

@@ -17,6 +17,7 @@ public class CircularProgressBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        progressBar.fillAmount = 1;
         timeRemaining = maxTime;
     }
 
